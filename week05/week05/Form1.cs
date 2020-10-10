@@ -14,6 +14,7 @@ namespace week05
     {
         PortfolioEntities context = new PortfolioEntities();
         List<Tick> Ticks;
+        
 
         public Form1()
         {
