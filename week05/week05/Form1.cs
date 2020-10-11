@@ -18,6 +18,8 @@ namespace week05
 
         List<Entities.PortfolioItem> Portfolio = new List<Entities.PortfolioItem>();
 
+        List<decimal> Nyereségek = new List<decimal>();
+
         public Form1()
         {
             InitializeComponent();
@@ -26,8 +28,7 @@ namespace week05
             dataGridView1.DataSource = Ticks;
 
             CreatePortfolio();
-
-            List<decimal> Nyereségek = new List<decimal>();
+                        
             int intervalum = 30;
             DateTime kezdőDátum = (from x in Ticks select x.TradingDay).Min();
             DateTime záróDátum = new DateTime(2016, 12, 30);
@@ -79,8 +80,19 @@ namespace week05
             using(StreamWriter sw = new StreamWriter(sfd.FileName, false, Encoding.UTF8))
             {
                 sw.Write("Időszak");
+                sw.Write(";");
                 sw.Write("Nyereség");
                 sw.WriteLine();
+
+                int c = 0;
+                foreach (var x in Nyereségek)
+                {
+                    sw.Write(c);
+                    sw.Write(";");
+                    sw.Write(x);
+                    sw.WriteLine();
+                    c++;
+                }
 
             }
         }
