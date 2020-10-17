@@ -16,6 +16,7 @@ namespace week06
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        string result;
 
         public Form1()
         {
@@ -24,9 +25,11 @@ namespace week06
             dataGridView1.DataSource = Rates;
 
             GetExchangeRatesFunction();
+
+            XMLFunction();
         }
 
-        public string GetExchangeRatesFunction()
+        private void GetExchangeRatesFunction()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
@@ -38,15 +41,30 @@ namespace week06
             };
 
             var response = mnbService.GetExchangeRates(request);
-            var result = response.GetExchangeRatesResult;
-           
-            return result;
+            result = response.GetExchangeRatesResult;
+          
         }
 
-        public void XMLFunction()
+        private void XMLFunction()
         {
             var xml = new XmlDocument();
-            
+            xml.LoadXml(result);
+            foreach (XmlElement element in xml.DocumentElement)
+            {
+                var rate = new RateData();
+                Rates.Add(rate);
+
+                rate.Date = DateTime.Parse(element.GetAttribute("date"));
+
+                var childElement = (XmlElement)element.ChildNodes[0];
+                rate.Currency = childElement.GetAttribute("curr");
+
+                var unit = decimal.Parse(childElement.GetAttribute("unit"));
+                var value = decimal.Parse(childElement.InnerText);
+                if (unit != 0)
+                    rate.Value = value / unit;
+            }
+
         }
     }
 }
