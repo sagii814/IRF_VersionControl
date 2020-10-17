@@ -17,11 +17,16 @@ namespace week06
     public partial class Form1 : Form
     {
         BindingList<RateData> Rates = new BindingList<RateData>();
+        
         string result;
+
+        //BindingList<string> Currencies = new BindingList<string>();
 
         public Form1()
         {
             InitializeComponent();
+
+            dataGridView1.DataSource = Rates;
 
             RefreshData();
         }
@@ -29,8 +34,6 @@ namespace week06
         private void RefreshData()
         {
             Rates.Clear();
-
-            dataGridView1.DataSource = Rates;
 
             GetExchangeRatesFunction();
 
