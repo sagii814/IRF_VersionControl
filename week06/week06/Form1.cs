@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using System.Xml;
 using week06.Entities;
 using week06.MNBServiceReference;
 
@@ -25,7 +26,7 @@ namespace week06
             GetExchangeRatesFunction();
         }
 
-        public void GetExchangeRatesFunction()
+        public string GetExchangeRatesFunction()
         {
             var mnbService = new MNBArfolyamServiceSoapClient();
 
@@ -37,8 +38,15 @@ namespace week06
             };
 
             var response = mnbService.GetExchangeRates(request);
-            string result = response.GetExchangeRatesResult;
+            var result = response.GetExchangeRatesResult;
+           
+            return result;
+        }
 
+        public void XMLFunction()
+        {
+            var xml = new XmlDocument();
+            
         }
     }
 }
