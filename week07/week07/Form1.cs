@@ -20,6 +20,9 @@ namespace week07
 
         Random rng = new Random(369);
 
+        List<int> nbrOfMales = new List<int>();
+        List<int> nbrOfFemales = new List<int>();
+
         public Form1()
         {
             InitializeComponent();
@@ -103,14 +106,16 @@ namespace week07
                     SimStep(year, Population[i]);
                 }
 
-                int nbrOfMales = (from x in Population
+                int Mnbr = (from x in Population
                                   where x.Gender == Gender.Male && x.IsAlive
                                   select x).Count();
-                int nbrOfFemales = (from x in Population
+                int Fnbr = (from x in Population
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
-                MessageBox.Show(
-                    string.Format("Év:{0} Fiúk:{1} Lányok:{2}", year, nbrOfMales, nbrOfFemales));
+
+                nbrOfMales.Add(Mnbr);
+                nbrOfFemales.Add(Fnbr);
+
             }
         }
         private void SimStep(int year, Person person)
@@ -144,6 +149,7 @@ namespace week07
             }
 
         }
+
 
         private void button2_Click(object sender, EventArgs e)
         {
