@@ -20,8 +20,8 @@ namespace week07
 
         Random rng = new Random(369);
 
-        List<int> nbrOfMales = new List<int>();
-        List<int> nbrOfFemales = new List<int>();
+      //  List<int> nbrOfMales = new List<int>();
+      //  List<int> nbrOfFemales = new List<int>();
 
         public Form1()
         {
@@ -111,10 +111,8 @@ namespace week07
                                     where x.Gender == Gender.Female && x.IsAlive
                                     select x).Count();
 
-                nbrOfMales.Add(Mnbr);
-                nbrOfFemales.Add(Fnbr);
-
-                DisplayResults();
+                richTextBox1.AppendText(string.Format("Év:{0} \n \t Fiúk:{1} \n \t Lányok:{2} \n \n", 
+                    year, Mnbr, Fnbr));
             }
         }
         private void SimStep(int year, Person person)
@@ -149,17 +147,17 @@ namespace week07
 
         }
 
-        private void DisplayResults()
-        {
-            for (int i = 2005; i < numericUpDown1.Value; i++)
-            {
-                richTextBox1.AppendText("Szimulációs év: " + i + "\n"
-                //    "\t" + "Fiúk: " + nbrOfMales[i-2005] + "\n" +
-                //    "\t" + "Lányok: " + nbrOfFemales[i - 2005] + "\n"
-                    );
+        //private void DisplayResults()
+        //{
+        //    for (int i = 2005; i < numericUpDown1.Value; i++)
+        //    {
+        //        richTextBox1.AppendText("Szimulációs év: " + i + "\n"
+        //        //    "\t" + "Fiúk: " + nbrOfMales[i-2005] + "\n" +
+        //        //    "\t" + "Lányok: " + nbrOfFemales[i - 2005] + "\n"
+        //            );
 
-            }
-        }
+        //    }
+        //}
 
         private void button2_Click(object sender, EventArgs e)
         {
