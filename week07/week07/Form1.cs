@@ -24,11 +24,7 @@ namespace week07
         {
             InitializeComponent();
 
-            Population = GetPopulation(@"C:\Windows\Temp\nép-teszt.csv");
-            BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
-            DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
-
-            Simulation();
+            
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -95,7 +91,11 @@ namespace week07
         }
 
         private void Simulation()
-        {
+        {   
+            Population = GetPopulation(@"C:\Windows\Temp\nép-teszt.csv");
+            BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
+            DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
+
             for (int year = 2005; year < 2024; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
@@ -143,6 +143,17 @@ namespace week07
 
             }
 
+        }
+
+        private void button2_Click(object sender, EventArgs e)
+        {
+            richTextBox1.Clear();
+
+            Population.Clear();
+            BirthProbabilities.Clear();
+            DeathProbabilities.Clear();
+
+            Simulation();
         }
     }
 }
