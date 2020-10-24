@@ -21,6 +21,10 @@ namespace week07
         public Form1()
         {
             InitializeComponent();
+
+            Population = GetPopulation(@"C:\Windows\Temp\nép.csv");
+            BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
+            DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -44,7 +48,7 @@ namespace week07
             return population;
         }
 
-        public List<BirthProbability> GetBirthProbabilites(string csvpath)
+        public List<BirthProbability> GetBirthProbabilities(string csvpath)
         {
             List<BirthProbability> birthProbabilities = new List<BirthProbability>();
 
