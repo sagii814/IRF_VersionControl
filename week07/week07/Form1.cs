@@ -96,7 +96,7 @@ namespace week07
             BirthProbabilities = GetBirthProbabilities(@"C:\Windows\Temp\születés.csv");
             DeathProbabilities = GetDeathProbabilities(@"C:\Windows\Temp\halál.csv");
 
-            for (int year = 2005; year < 2024; year++)
+            for (int year = 2005; year < numericUpDown1.Value; year++)
             {
                 for (int i = 0; i < Population.Count; i++)
                 {
