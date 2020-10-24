@@ -26,8 +26,6 @@ namespace week07
         public Form1()
         {
             InitializeComponent();
-
-            
         }
 
         public List<Person> GetPopulation(string csvpath)
@@ -116,6 +114,7 @@ namespace week07
                 nbrOfMales.Add(Mnbr);
                 nbrOfFemales.Add(Fnbr);
 
+                DisplayResults();
             }
         }
         private void SimStep(int year, Person person)
@@ -150,6 +149,17 @@ namespace week07
 
         }
 
+        private void DisplayResults()
+        {
+            for (int i = 2005; i < numericUpDown1.Value; i++)
+            {
+                richTextBox1.AppendText("Szimulációs év: " + i + "\n"
+                //    "\t" + "Fiúk: " + nbrOfMales[i-2005] + "\n" +
+                //    "\t" + "Lányok: " + nbrOfFemales[i - 2005] + "\n"
+                    );
+
+            }
+        }
 
         private void button2_Click(object sender, EventArgs e)
         {
