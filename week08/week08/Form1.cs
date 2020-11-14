@@ -95,5 +95,20 @@ namespace week08
                 return;
             button.BackColor = colorPicker.Color;
         }
+
+        private void presentButton_Click(object sender, EventArgs e)
+        {
+            Factory = new PresentFactory
+            {
+                BoxColor = presentColor1.BackColor,
+                RibbonColor = presentColor2.BackColor
+            };
+
+        }
+
+        private void presentColor1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
