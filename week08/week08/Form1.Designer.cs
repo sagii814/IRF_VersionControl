@@ -94,7 +94,7 @@
             this.colorButton.Size = new System.Drawing.Size(58, 33);
             this.colorButton.TabIndex = 4;
             this.colorButton.UseVisualStyleBackColor = false;
-            this.colorButton.Click += new System.EventHandler(this.button1_Click);
+            this.colorButton.Click += new System.EventHandler(this.colorButton_Click);
             // 
             // Form1
             // 

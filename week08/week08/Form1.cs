@@ -32,7 +32,9 @@ namespace week08
         public Form1()
         {
             InitializeComponent();
-                        
+
+            Factory = new CarFactory();
+
         }
 
         private void createTimer_Tick(object sender, EventArgs e)
