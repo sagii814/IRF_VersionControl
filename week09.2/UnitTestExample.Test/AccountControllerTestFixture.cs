@@ -3,6 +3,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using UnitTestExample.Controllers;
 
@@ -36,9 +37,17 @@ namespace UnitTestExample.Test
             TestCase("Apple1",false),
             TestCase("11PanCakes", true)
         ]
-        public void TestValidatePassword(string email, bool expectedResult)
+        public void TestValidatePassword(string password, bool expectedResult)
         {
-            
+            //Arrange
+            Regex regex = new Regex("^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z]).{8,}$");
+
+            // Act
+            var actualResult = regex.IsMatch(password);
+
+            // Assert
+            Assert.AreEqual(expectedResult, actualResult);
+
         }
 
     }
