@@ -20,8 +20,12 @@ namespace week10
         public Form1()
         {
             InitializeComponent();
+
             ga = gc.ActivateDisplay();
             this.Controls.Add(ga);
+
+            //gc.AddPlayer();
+            //gc.Start(true);
         }
     }
 }
